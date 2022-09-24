@@ -22,7 +22,7 @@
 
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Add Product</h4>
+                <h4 class="modal-title" id="form_title"></h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -54,7 +54,8 @@
                         <input type="file" id="product_image" class="random_class" name="product_image[]" multiple="">
                         </div>
                     </div>
-                    <div id="image_div" style="text-align: center;"></div>
+                    <div id="image_div" class="row" style="text-align: center;">
+                    </div>
                    
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" id="btn_edit_player">Save</button>

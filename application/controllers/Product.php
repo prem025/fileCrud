@@ -68,6 +68,7 @@ class Product extends CI_Controller {
         $response = ['status' => FALSE, 'data' => NULL, 'message' => 'Invalid Parameters'];
         $post = $this->input->post();
 
+        
    
         $product_image= array();
         if($_FILES['product_image']['name'][0] != ''){
@@ -76,10 +77,10 @@ class Product extends CI_Controller {
             foreach($_FILES['product_image']['name'] as $k1=>$v1){
                 if (!empty($_FILES['product_image']['tmp_name'][$j])) {
                     $ext = pathinfo($_FILES['product_image']['name'][$j])['extension'];
-                    if (!is_dir(FCPATH . "assets/clubproduct/")) {
-                        mkdir(FCPATH . "assets/clubproduct/", 777);
+                    if (!is_dir(FCPATH . "assets/product/")) {
+                        mkdir(FCPATH . "assets/product/", 777);
                     }
-                    $target = "assets/clubproduct/". date('YmdHis').rand(100,1000) . "." . $ext;
+                    $target = "assets/product/". date('YmdHis').rand(100,1000) . "." . $ext;
                     if (move_uploaded_file($_FILES['product_image']['tmp_name'][$j], FCPATH . $target)) {
                         $imageurl = base_url()  . $target;
                     }
@@ -87,14 +88,15 @@ class Product extends CI_Controller {
                 $j++;
                 array_push($product_image,$imageurl);
             }
+            $post['product_image'] = json_encode($product_image);
         }
         else{
-            $imageurl = $post['image_item'];
-            array_push($product_image,$imageurl);
+            
+            $post['product_image'] = json_encode($post['image_item']);
         }
          
        
-        $post['product_image'] = json_encode($product_image);
+        
     
          unset($post['image_item']);
          $product_id = $post['product_id'];

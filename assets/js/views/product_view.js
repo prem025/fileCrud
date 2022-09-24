@@ -101,6 +101,7 @@ $(document).delegate(':file', 'change', function() {
 
 });
 addProduct = () =>{
+    $('#form_title').text('Add Product');
     $("#product_modal").modal("show");
 }
 $("#add_edit_product").submit(function (e) {
@@ -154,7 +155,7 @@ $('#product_modal').on('hidden.bs.modal', function () {
 })
 
 editProduct = (id) =>{
-
+    $('#form_title').text('Update Product');
     $.ajax({
         url: base_url + 'Product/editProductData',
         type: 'POST',
@@ -180,11 +181,12 @@ editProduct = (id) =>{
                 $.each(image,function(i,v){
                     console.log(v);
                     if(v != ''){
-                        items +='<div id="iamge_div'+i+'"><input type="hidden" name="image_item[]" value="'+v+'"/>';
+                        items +='<div class="col-sm-3 removeDiv" id="iamge_div'+i+'"><input type="hidden" name="image_item[]" value="'+v+'"/>';
                         items +='<img src="'+v+'" alt="product image" width="100" height="100"><button class="imgbtn btn btn-danger">Remove</button></div>';
                     }
                    
                 })
+                
                 $('#image_div').html(items);
                $("#product_modal").modal("show");
 
