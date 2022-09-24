@@ -14,9 +14,7 @@ class Product extends CI_Controller {
 	{
 		$hdata['heading'] = 'Add Product';
 		$data=NULL;
-        $hdata['btn'] = '<button class="btn btn-primary pull-right btn-sm " onclick="addProduct()">Add Product</buttton>';
         
-        // print_r($product);exit;
         $hdata['data'] ='';
         $hdata['view'] = 'product_view';
         
